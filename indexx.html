@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffcccc; /* Light pink background */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #e74c3c; /* Red */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p.question {
+            color: #e74c3c; /* Red */
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2em;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        .love-message {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f7b3d5; /* Light purple */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease;
+        }
+        .heart {
+            font-size: 50px;
+            color: #e74c3c; /* Heart color */
+            margin-bottom: 10px;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #9b59b6, #e74c3c, #f39c12, #2ecc71);
+            background-size: 500% 500%;
+            animation: gradient 15s ease infinite;
+            z-index: 0;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1>Do You Love Me?</h1>
+        <button onclick="askFirstQuestion()">Let's Find Out!</button>
+        <div id="firstQuestion" style="display: none;">
+            <p class="question">Do you have a crush on me?</p>
+            <button onclick="askSecondQuestion()">Yes</button>
+        </div>
+        <div id="secondQuestion" style="display: none;">
+            <p class="question">Are you called Hussain?</p>
+            <button onclick="askFinalQuestion()">Yes</button>
+        </div>
+        <div id="finalQuestion" style="display: none;">
+            <p class="question">Do you love me?</p>
+            <button onclick="showLove()">Yes</button>
+        </div>
+        <div id="loveMessage" class="love-message">
+            <p class="heart">❤️</p>
+            <p style="color: #e74c3c; font-size: 1.5em; font-weight: bold;">I love you, Hussain!</p>
+        </div>
+    </div>
+
+    <script>
+        function askFirstQuestion() {
+            document.getElementById("firstQuestion").style.display = "block";
+            document.querySelector("h1").innerText = "Do You Have a Crush on Me?";
+            document.querySelector("button").innerText = "Yes";
+            document.querySelector(".background").style.animation = "gradient 15s ease infinite";
+        }
+
+        function askSecondQuestion() {
+            document.getElementById("firstQuestion").style.display = "none";
+            document.getElementById("secondQuestion").style.display = "block";
+            document.querySelector("h1").innerText = "Are You Called Hussain?";
+        }
+
+        function askFinalQuestion() {
+            document.getElementById("secondQuestion").style.display = "none";
+            document.getElementById("finalQuestion").style.display = "block";
+            document.querySelector("h1").innerText = "Do You Love Me?";
+        }
+
+        function showLove() {
+            var loveMessage = document.getElementById("loveMessage");
+            loveMessage.style.display = "block";
+            loveMessage.style.animation = "fadeIn 1s ease";
+            document.querySelector(".container").style.animation = "bounceIn 0.8s ease";
+            document.querySelector(".background").style.animation = "gradient 10s ease infinite";
+        }
+    </script>
+</body>
+</html>
